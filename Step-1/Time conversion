@@ -1,0 +1,24 @@
+string timeConversion(string s) {
+    //Extracting the strings with index and length
+    string hourstr = s.substr(0,2);
+    string minStr = s.substr(3,2);
+    string scndStr = s.substr(6,2);
+    string period = s.substr(8,2);
+    //converting (string) hour to integer
+    int hour = stoi(hourstr);
+    if(period=="AM"){
+        if(hour==12){
+            hour = 0; //Am so it's midnight so change to 00
+        }
+    }
+    else if (period=="PM") {
+        if(hour!=12){
+            hour += 12; //1 o clk --> 13
+        }
+    
+    }
+    stringstream result;
+    result << setw(2) << setfill('0')<< hour<< ":" <<minStr<<":"<<scndStr;
+    return result.str();
+    
+}
