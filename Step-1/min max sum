@@ -1,17 +1,15 @@
 void miniMaxSum(vector<int> arr) {
 
-   long long totSum = 0;
-   int minSum = INT_MAX;
-   int maxSum = INT_MIN;
-   for(int num : arr) {
-    totSum += num;
-    minSum = min(minSum , num);
-    maxSum = max(maxSum, num);
-    
-    
-   }
-   long long mini = totSum - maxSum;
-   long long maxi = totSum - minSum;
-   cout << mini << " " << maxi;
-    
+    long long totSum = 0;
+    int minElem = INT_MAX;
+    int maxElem = INT_MIN;
+    for(int num : arr){
+        totSum += num;
+        minElem = min(minElem, num);
+        maxElem = max(maxElem, num);
+    }
+    long long maxSum = totSum - minElem;
+    long long minSum = totSum - maxElem;
+    cout<< minSum << " " << maxSum;
+
 }
