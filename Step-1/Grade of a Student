@@ -1,0 +1,18 @@
+vector<int> gradingStudents(vector<int> grades) {
+    //less than 3 --> round of with mult of 5
+    //<38 fail no need to roundof/modify
+   int n = grades.size();
+   for(int i=0; i<n; i++){
+    int nextMulOf5 = ((grades[i]+4)/5)*5;
+    if(grades[i]>=38){
+        if(nextMulOf5-grades[i]<3){
+            grades[i]=nextMulOf5;
+        }
+    }
+   }
+   return grades;
+
+}
+
+
+Link:https://www.hackerrank.com/challenges/grading/problem?isFullScreen=true
