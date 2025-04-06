@@ -1,0 +1,30 @@
+string dayOfProgrammer(int year) {
+    int tot_eight_days = 0;
+    if(year < 1918) {
+        tot_eight_days = 243;
+        if(year%4==0) tot_eight_days +=1;
+    }
+    else if(year==1918){
+        tot_eight_days = 230;
+    }
+    else if(year > 1918){
+        tot_eight_days = 243;
+        if(year%400==0) tot_eight_days += 1;
+        else if(year%4==0 && (year%100)!=0) tot_eight_days += 1;
+    }
+    string ans = "";
+    int day = 256 - tot_eight_days;
+    string d = to_string(day);
+    string y = to_string(year);
+    if(d.size()==2) ans += d;
+    else {
+        ans += '0';
+        ans += d;
+    }
+    ans += ".";
+    ans += "09.";
+    ans += y;
+     return ans;
+    
+
+}
