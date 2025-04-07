@@ -1,0 +1,17 @@
+int designerPdfViewer(vector<int> h, string word) {
+    unordered_map<char, int>mp;
+    char ch = 'a';
+    for(int i=0; i<26;i++){
+        mp[ch] = i;
+        ch++;
+    }
+   int width = word.size();
+   int max_height = 0;
+   for(int i=0; i<word.size();i++){
+    int idx = mp[word[i]];
+    int height = h[idx];
+    max_height = max(max_height, height);
+   }
+   return max_height*width;
+
+}
