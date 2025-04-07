@@ -1,0 +1,7 @@
+int hurdleRace(int k, vector<int> height) {
+    
+    int maxi = *max_element(height.begin(),height.end());
+    if(maxi-k > 0) return maxi-k;
+    return 0;
+
+}
