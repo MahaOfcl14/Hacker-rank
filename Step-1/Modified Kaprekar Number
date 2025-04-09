@@ -1,0 +1,41 @@
+void kaprekarNumbers(int p, int q) {
+    
+    bool flag = 0;
+    for(int i=p; i<=q; i++){
+        string s = to_string(i);
+        int digits = s.size();
+        long long squared = (long long)i*(long long)i;
+        string s1 = to_string(squared);
+        string left_part="", right_part="";
+        
+        if(s1.size()==1){
+            left_part=s1;
+            
+        }
+        else{
+            left_part = s1.substr(0,s1.size()-digits);
+            right_part = s1.substr(s1.size()-digits);
+        }
+        if(right_part==""){
+            long long left = stoi(left_part);
+            if(left==i){
+                cout<<i<<" ";
+                flag=1;
+            }
+        }
+            else{
+            long long left = stoi(left_part);
+            long long right = stoi(right_part);
+            if(left+right==i){
+                cout<<i<<" ";
+                flag=1;
+            }
+
+
+                
+            }
+        
+    }
+    if(flag==0) cout<<"INVALID RANGE"; 
+
+}
