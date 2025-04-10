@@ -1,0 +1,31 @@
+string balancedSums(vector<int> arr) {
+    int n = arr.size();
+    vector<int>prefix(n,0);
+    prefix[0]=arr[0];
+    for(int i=1;i<n;i++){
+        prefix[i]=arr[i]+prefix[i-1];
+    }
+    bool flag = 0;
+    for(int i=0; i<n;i++){
+        int left=0, right=0;
+        if(i==0){
+            left=0;
+            right=prefix[n-1]-prefix[i];
+        }
+        if(i==n-1){
+            left=prefix[i-1];
+            right=0;
+        }
+        else{
+            right=prefix[n-1]-prefix[i];
+            left=prefix[i-1];
+        }
+        if(left==right){
+            flag=1;
+            break;
+        }
+    }
+    if(flag==1) return "YES";
+    return "NO";
+
+}
