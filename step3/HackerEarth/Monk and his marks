@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+bool compare(pair<string,int>&a, pair<string,int>&b){
+	if(a.second != b.second) return a.second > b.second;
+	return a.first < b.first;
+}
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	int N;
+	cin>>N;
+	vector<pair<string,int>>students;
+	for(int i=0; i<N; i++){
+		string Name;
+		int marks;
+		cin>>Name>>marks;
+		students.push_back({Name,marks});
+	}
+	sort(students.begin(),students.end(),compare);
+	for(auto &s : students){
+		cout<<s.first<<" "<<s.second<<"\n";
+	}
+	return 0;
+}
