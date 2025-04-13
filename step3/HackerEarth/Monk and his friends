@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int T;
+    cin >> T;
+    
+    while (T--) {
+        long long N, M;
+        cin >> N >> M;
+
+        unordered_set<long long> candySet;
+        long long total = N + M;
+
+        // Read all candies in one go
+        vector<long long> candies(total);
+        for (long long i = 0; i < total; i++) {
+            cin >> candies[i];
+        }
+
+        // Insert first N students' candies into the set
+        for (long long i = 0; i < N; i++) {
+            candySet.insert(candies[i]);
+        }
+
+        // Process the next M students
+        for (long long i = N; i < total; i++) {
+            if (candySet.find(candies[i]) != candySet.end()) {
+                cout << "YES" << endl;
+            } else {
+                cout << "NO" << endl;
+                // Insert this student's candy for future matching
+                candySet.insert(candies[i]);
+            }
+        }
+    }
+
+    return 0;
+}
